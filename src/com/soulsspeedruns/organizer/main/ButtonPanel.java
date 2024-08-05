@@ -316,7 +316,6 @@ public class ButtonPanel extends JPanel
 
 			@Override
 			public void entriesSelected(List<SaveListEntry> entries) {
-				System.out.println("Called multiple entry event");
 				if(entries != null && entries.size() > 1){
 					loadRandomButton.setEnabled(true);
 					return;

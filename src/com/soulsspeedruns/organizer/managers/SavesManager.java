@@ -249,8 +249,6 @@ public class SavesManager
 	 */
 	public static void setSelectedEntry(List<SaveListEntry> entries)
 	{
-		for (SaveListEntry entry : entries)
-			System.out.println(entry);
 		if(entries.isEmpty())
 			selectedEntry = null;
 		else
