@@ -29,8 +29,8 @@ import com.soulsspeedruns.organizer.managers.SettingsManager;
 public class OrganizerWindow extends JFrame implements SettingsListener
 {
 
-	private static final int MIN_WIDTH = 640;
-	private static final int MIN_HEIGHT = 550;
+	private static final int MIN_WIDTH = 960;
+	private static final int MIN_HEIGHT = 640;
 
 	private static final int MIN_WIDTH_COMPACT = 490;
 	private static final int MIN_HEIGHT_COMPACT = 400;

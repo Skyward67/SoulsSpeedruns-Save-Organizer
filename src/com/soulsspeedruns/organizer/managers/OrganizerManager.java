@@ -39,6 +39,10 @@ public class OrganizerManager
 	public static final String GITHUB_REPO_URL = "https://github.com/Kahmul/SoulsSpeedruns-Save-Organizer";
 	public static final String TWITTER_URL = "https://twitter.com/Kahmul78";
 
+	public static final String WEB_PAGE_URL_FORK = "https://github.com/Skyward67/SoulsSpeedruns-Save-Organizer";
+	public static final String GITHUB_REPO_URL_FORK = "https://github.com/Skyward67/SoulsSpeedruns-Save-Organizer";
+	public static final String YOUTUBE_URL_FORK = "https://www.youtube.com/@skyward3401";
+
 	public static final String ILLEGAL_CHARACTERS = "~, @, *, {, }, <, >, [, ], |, \u201C, \u201D, \\, /, ^";
 	private static final String ILLEGAL_CHARACTERS_REGEX = "[~#@*{}<>\\[\\]|\"\\^\\\\\\/]";
 
