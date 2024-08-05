@@ -42,6 +42,7 @@ public class SavesManager
 	private static List<NavigationListener> navigationListeners;
 
 	private static SaveListEntry selectedEntry;
+	private static List<SaveListEntry> selectedEntries;
 
 
 	protected static void initialize()
@@ -246,10 +247,17 @@ public class SavesManager
 	 * 
 	 * @param entry the selected entry
 	 */
-	public static void setSelectedEntry(SaveListEntry entry)
+	public static void setSelectedEntry(List<SaveListEntry> entries)
 	{
-		selectedEntry = entry;
-		fireEntrySelectedEvent(entry);
+		for (SaveListEntry entry : entries)
+			System.out.println(entry);
+		if(entries.isEmpty())
+			selectedEntry = null;
+		else
+			selectedEntry = entries.get(0);
+		selectedEntries = entries;
+		fireEntrySelectedEvent(selectedEntry);
+		fireEntriesSelectedEvent(selectedEntries);
 	}
 
 
@@ -261,6 +269,15 @@ public class SavesManager
 	public static SaveListEntry getSelectedEntry()
 	{
 		return selectedEntry;
+	}
+
+	/**
+	 * Returns the currently selected entries in the SaveList.
+	 *
+	 * @return the entries selected in the SaveList
+	 */
+	public static List<SaveListEntry> getSelectedEntries(){
+		return selectedEntries;
 	}
 
 
@@ -372,6 +389,12 @@ public class SavesManager
 		}
 	}
 
+	public static void fireEntriesSelectedEvent(List<SaveListEntry> entries){
+		for (SaveListener listener : saveListeners){
+			listener.entriesSelected(entries);
+		}
+	}
+
 
 	/**
 	 * Fires a saveLoadStarted event.
@@ -404,7 +427,7 @@ public class SavesManager
 	/**
 	 * Fires a gameFileWritableStateChanged event.
 	 * 
-	 * @param save the save that was loaded
+	 *
 	 */
 	public static void fireGameFileWritableStateChangedEvent(boolean writeable)
 	{

@@ -4,6 +4,8 @@ package com.soulsspeedruns.organizer.listeners;
 import com.soulsspeedruns.organizer.savelist.Save;
 import com.soulsspeedruns.organizer.savelist.SaveListEntry;
 
+import java.util.List;
+
 
 /**
  * Save Listener.
@@ -23,6 +25,10 @@ public interface SaveListener
 	 */
 	public void entrySelected(SaveListEntry entry);
 
+	/**
+	 * Called when the selection in the Savelist changed and contains multiple elements
+	 * */
+	public void entriesSelected(List<SaveListEntry> entries);
 
 	/**
 	 * Called when a save is imported or a folder is created.

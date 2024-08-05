@@ -173,17 +173,20 @@ public class SaveList extends JList<SaveListEntry> implements ListSelectionListe
 	 */
 	public void refreshList()
 	{
-		SaveListEntry selectedEntry = SavesManager.getSelectedEntry();
+		List<SaveListEntry> selectedEntries = SavesManager.getSelectedEntries();
 		Profile currentProfile = GamesManager.getSelectedProfile();
 		if (currentProfile.getRoot() == null)
 			return;
 		currentProfile.getRoot().sort();
 		fillWith(currentProfile, null);
-		int selectedIndex = ((DefaultListModel<SaveListEntry>) getModel()).indexOf(selectedEntry);
-		if (selectedIndex != -1)
+		List<Integer> selectedIndices = new ArrayList<>();
+		for(SaveListEntry entry : selectedEntries){
+			selectedIndices.add(((DefaultListModel<SaveListEntry>) getModel()).indexOf(entry));
+		}
+		if (!selectedIndices.isEmpty())
 		{
-			setSelectedIndex(selectedIndex);
-			ensureIndexIsVisible(selectedIndex);
+			setSelectedIndices(selectedIndices.stream().mapToInt(i->i).toArray());
+			ensureIndexIsVisible(selectedIndices.get(0));
 		}
 	}
 
@@ -562,7 +565,7 @@ public class SaveList extends JList<SaveListEntry> implements ListSelectionListe
 	@Override
 	public void valueChanged(ListSelectionEvent e)
 	{
-		SavesManager.setSelectedEntry(getSelectedValue());
+		SavesManager.setSelectedEntry(getSelectedValuesList());
 	}
 
 
@@ -629,6 +632,11 @@ public class SaveList extends JList<SaveListEntry> implements ListSelectionListe
 	{
 	}
 
+	@Override
+	public void entriesSelected(List<SaveListEntry> entries) {
+
+	}
+
 
 	@Override
 	public void saveLoadStarted(Save save)
@@ -639,8 +647,10 @@ public class SaveList extends JList<SaveListEntry> implements ListSelectionListe
 	@Override
 	public void saveLoadFinished(Save save)
 	{
-		int newIndex = ((DefaultListModel<SaveListEntry>) getModel()).indexOf(save);
-		setSelectedIndex(newIndex);
+		if(SavesManager.getSelectedEntries().size() > 1){
+			SavesManager.getSelectedEntries().remove(SavesManager.getSelectedEntries().indexOf(save));
+		}
+		refreshList();
 		requestFocusInWindow();
 	}
 

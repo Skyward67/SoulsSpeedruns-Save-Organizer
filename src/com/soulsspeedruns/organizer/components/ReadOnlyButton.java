@@ -6,6 +6,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.util.List;
 
 import javax.swing.JLabel;
 
@@ -258,6 +259,11 @@ public class ReadOnlyButton extends JLabel implements MouseListener, ProfileList
 	@Override
 	public void entrySelected(SaveListEntry entry)
 	{
+	}
+
+	@Override
+	public void entriesSelected(List<SaveListEntry> entries) {
+
 	}
 
 

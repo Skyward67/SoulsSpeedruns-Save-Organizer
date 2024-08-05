@@ -3,6 +3,8 @@ package com.soulsspeedruns.organizer.main;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.util.List;
+import java.util.Random;
 
 import javax.swing.Box;
 import javax.swing.GroupLayout;
@@ -52,9 +54,11 @@ public class ButtonPanel extends JPanel
 
 	private JButton importButton;
 	private JButton loadButton;
+	private JButton loadRandomButton;
 	private JButton replaceButton;
 	private JButton settingsButton;
 	private HyperLink updateLink;
+
 
 
 	/**
@@ -70,6 +74,7 @@ public class ButtonPanel extends JPanel
 
 		importButton = createImportButton();
 		loadButton = createLoadButton();
+		loadRandomButton = createRandomisedLoadButton();
 		replaceButton = createReplaceButton();
 		settingsButton = createSettingsButton();
 		updateLink = createUpdateLink();
@@ -89,6 +94,7 @@ public class ButtonPanel extends JPanel
 
 		hGroup.addComponent(importButton);
 
+		hGroup.addComponent(loadRandomButton);
 		hGroup.addComponent(loadButton);
 		hGroup.addComponent(replaceButton);
 		hGroup.addGap(10);
@@ -101,7 +107,7 @@ public class ButtonPanel extends JPanel
 		// Vertical
 		GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
 
-		vGroup.addGroup(layout.createParallelGroup(Alignment.CENTER).addComponent(importButton).addComponent(loadButton).addComponent(replaceButton)
+		vGroup.addGroup(layout.createParallelGroup(Alignment.CENTER).addComponent(importButton).addComponent(loadButton).addComponent(loadRandomButton).addComponent(replaceButton)
 				.addComponent(readOnlyButton).addComponent(glue).addComponent(settingsUpdatePanel));
 		vGroup.addGap(10);
 
@@ -154,6 +160,43 @@ public class ButtonPanel extends JPanel
 			if (entry instanceof Folder)
 				return;
 			SavesManager.loadSave((Save) entry);
+		});
+		LafManager.addThemeChangeListener(new ThemeChangeListener()
+		{
+
+			@Override
+			public void themeInstalled(ThemeChangeEvent e)
+			{
+				loadButton.setDisabledIcon(IconFontSwing.buildIcon(Elusive.REPEAT, 15, UIManager.getColor("disabledIconColor")));
+			}
+
+
+			@Override
+			public void themeChanged(ThemeChangeEvent e)
+			{
+			}
+		});
+		loadButton.setEnabled(false);
+		return loadButton;
+	}
+
+	/**
+	 * Create a 'Randomised Load Savestate' button.
+	 *
+	 * @return the randomise load button
+	 * */
+	private JButton createRandomisedLoadButton(){
+		JButton loadButton = new JButton("Random Load Savestate");
+		loadButton.setIcon(IconFontSwing.buildIcon(Elusive.REPEAT, 15, Color.decode("0x2c9558")));
+		loadButton.setDisabledIcon(IconFontSwing.buildIcon(Elusive.REPEAT, 15, UIManager.getColor("disabledIconColor")));
+		loadButton.addActionListener(event -> {
+			List<SaveListEntry> entries = SavesManager.getSelectedEntries();
+			for (SaveListEntry entry : entries){
+				if (entries instanceof Folder){
+					return;
+				}
+			}
+			SavesManager.loadSave((Save) entries.get(new Random().nextInt(entries.size())));
 		});
 		LafManager.addThemeChangeListener(new ThemeChangeListener()
 		{
@@ -245,6 +288,7 @@ public class ButtonPanel extends JPanel
 		boolean isCompact = SettingsManager.isCompactModeEnabled();
 		importButton.setText(isCompact ? "Import" : "Import Savestate");
 		loadButton.setText(isCompact ? "Load" : "Load Savestate");
+		loadRandomButton.setText(isCompact ? "Random" : "Load Random Savestate");
 		replaceButton.setText(isCompact ? "Replace" : "Replace Savestate");
 	}
 
@@ -270,6 +314,15 @@ public class ButtonPanel extends JPanel
 				replaceButton.setEnabled(false);
 			}
 
+			@Override
+			public void entriesSelected(List<SaveListEntry> entries) {
+				System.out.println("Called multiple entry event");
+				if(entries != null && entries.size() > 1){
+					loadRandomButton.setEnabled(true);
+					return;
+				}
+				loadRandomButton.setEnabled(false);
+			}
 
 			@Override
 			public void entryCreated(SaveListEntry entry)
