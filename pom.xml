@@ -4,8 +4,8 @@
 	<groupId>SoulsSpeedruns</groupId>
 	<artifactId>SoulsSpeedrunsSaveOrganizer</artifactId>
 	<version>1.6.0.0</version>
-	<name>SoulsSpeedruns - Save Organizer</name>
-	<description>SoulsSpeedruns - Save Organizer</description>
+	<name>SoulsSpeedruns - Save Organizer (Modified by DoDoxys)</name>
+	<description>SoulsSpeedruns - Save Organizer (Modified by DoDoxys)</description>
 
 	<dependencies>
 <!--	<dependency>
