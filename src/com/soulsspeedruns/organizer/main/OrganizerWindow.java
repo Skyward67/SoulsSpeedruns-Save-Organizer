@@ -40,7 +40,7 @@ public class OrganizerWindow extends JFrame implements SettingsListener
 
 	public OrganizerWindow()
 	{
-		super("SoulsSpeedruns - Save Organizer");
+		super("SoulsSpeedruns - Save Organizer (DoDoxys)");
 
 		initProperties();
 		initLayout();
