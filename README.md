@@ -40,7 +40,7 @@ The SoulsSpeedruns - Save Organizer is a tool designed to manage savefiles for D
 
 ⚠️ **This application is primarily intended for speedrunners or challenge runners. There is little to no safeguarding for keeping your savefiles if you modify or delete them. If you wish to use this program for backing up your first playthrough or similar, make sure you know what you are doing and ideally make a separate backup of your savefiles elsewhere in case you mess up!** ⚠️
 
-# Unofficial Features
+## Unofficial Features
 
 - Random Save Load to spice your training (Usage: Clic on the first element and then press shift and clic on a second element, all selected elements are part of a randomized pool, you just now have to press Load Random SaveState, when loaded, the save will be remove from the pool)
 
