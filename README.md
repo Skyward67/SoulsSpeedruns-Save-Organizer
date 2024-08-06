@@ -115,3 +115,4 @@ If you tinkered with your savefiles manually in advance however, or are otherwis
 ## Credits
 
 - johndisandonato for adding the 'Highlight Previous/Next Savestate' hotkeys
+- [Kahmul](https://github.com/Kahmul/SoulsSpeedruns-Save-Organizer) for the original work on SoulsSpeedrun Save Organizer
