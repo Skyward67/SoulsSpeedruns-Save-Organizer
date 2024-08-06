@@ -1,4 +1,4 @@
-# <img src="https://github.com/Kahmul/SoulsSpeedruns-Save-Organizer/blob/develop/src/com/soulsspeedruns/organizer/images/SoulsSpeedrunsLogo32.png" width="28px"/> SoulsSpeedruns - Save Organizer
+# <img src="https://github.com/Kahmul/SoulsSpeedruns-Save-Organizer/blob/develop/src/com/soulsspeedruns/organizer/images/SoulsSpeedrunsLogo32.png" width="28px"/> SoulsSpeedruns - Save Organizer Unofficial Version
 
 <p align="center">
     <b>Click the banner below to join the SoulsSpeedruns Discord!</b><br><br>
@@ -8,15 +8,16 @@
 ## Table of Contents
 
 1. [Description](#description)
-2. [Features](#features)  
-3. [Requirements](#requirements)
-4. [Download](#download)
-5. [Getting Started](#getting-started) 
-6. [Creating/Loading Savefiles](#creatingloading-savefiles)
-7. [Savefile Locations](#savefile-locations)
-8. [Planned Features](#planned-features)
-9. [Troubleshooting](#troubleshooting)  
-10. [Credits](#credits)
+2. [Features](#features)
+3. [Unofficial Features](#unofficial-features)
+4. [Requirements](#requirements)
+5. [Download](#download)
+6. [Getting Started](#getting-started) 
+7. [Creating/Loading Savefiles](#creatingloading-savefiles)
+8. [Savefile Locations](#savefile-locations)
+9. [Planned Features](#planned-features)
+10. [Troubleshooting](#troubleshooting)  
+11. [Credits](#credits)
 
 ## Description
 
@@ -39,13 +40,19 @@ The SoulsSpeedruns - Save Organizer is a tool designed to manage savefiles for D
 
 ⚠️ **This application is primarily intended for speedrunners or challenge runners. There is little to no safeguarding for keeping your savefiles if you modify or delete them. If you wish to use this program for backing up your first playthrough or similar, make sure you know what you are doing and ideally make a separate backup of your savefiles elsewhere in case you mess up!** ⚠️
 
+# Unofficial Features
+
+- Random Save Load to spice your training (Usage: Clic on the first element and then press shift and clic on a second element, all selected elements are part of a randomized pool, you just now have to press Load Random SaveState, when loaded, the save will be remove from the pool)
+
+https://github.com/user-attachments/assets/abfe3e63-4c37-44b6-a906-ea218235580e
+
 ## Requirements
 
 - Java JRE 8 or higher (included in the bundled version)
 
 ## Download
 
-[Latest Release](https://github.com/Skyward67/SoulsSpeedruns-Save-Organizer/releases)
+[Latest Release](https://github.com/Kahmul/SpeedSouls-Save-Organizer/releases)
 
 - **Windows version:** Runnable .exe file. Requires Java JRE 8+ to be installed on your system.
 - **Bundled Windows version:** Runnable .exe file. Bundled with JRE 8.
